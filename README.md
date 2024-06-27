@@ -1,4 +1,31 @@
-# Naming Conventions
+# CPP-Guidelines
+My personal projects follow these guidelines.
+They are based on personal preferences.
+
+# Table of Contents
+1. [General Notes](#general-notes)
+2. [Project Structure](#project-structure)
+3. [Naming Convetions](#naming-conventions)
+4. [Comments](#comments)
+5. [Formatting](#formatting)
+
+# 1. General Notes
+>C++ projects target C++20.
+
+# 2. Project Structure
+## Library
+When developing a library, the [cpp-library](https://github.com/fburgerdev/cpp-library) tool decides on the project structure.
+
+The following structure is garantueed:
+- _include/PROJECT/_ contains the header files for distribution.
+- _lib/CONFIG/_ contains the compiled static and or shared libraries.
+- _src/_ containing all source files (_hpp_ and _cpp_) for the project.
+- _cpp-library.json_ contains information about the library.
+
+## Application
+For application projects, there is no fixed project structure yet.
+
+# 3. Naming Conventions
 ## Types
 >Types are named in `PascalCase`.
 
@@ -9,9 +36,9 @@ _classes_, _structs_, _enums_, _aliases_, _typedefs_ and _concepts_!
 >Functions are named in `camelCase`.
 
 Function names should be structured in one of the following ways:
-- _verb_, e.g. _sort()_
-- _verb_ + _Object_, e.g. _constructEntity()_
-- _verb_ + _Adjective_ + _Object_, e.g. _calcLegalMoves()_
+- _verb_, e.g. _sort( )_
+- _verb_ + _Object_, e.g. _constructEntity( )_
+- _verb_ + _Adjective_ + _Object_, e.g. _calcLegalMoves( )_
 
 Functions of "constant character" are named in `PascalCase`.
 They don't start with a verb.
@@ -38,13 +65,13 @@ int TypeSize(DType type) {
 Depending on the storage duration, the following prefixes are added:
 - `m_` for _member_ variables, e.g. _m_elementCount_
 - `s_` for _static_ variables, e.g. _s_rootPath_
-- `g_` for _global_ variables (that are not static), e.g. _g_projectConfig_
+- `g_` for _global_ variables, e.g. _g_projectConfig_
 
 ## Constants
 >Constants are named in `UPPER_CASE`.
 
 A variable is considered a constant if declared _const_ or _constexpr_
-and whose value fixed for the duration of the program.
+and whose value is fixed for the duration of the program.
 
 Note that the following is not considered a constant:
 
@@ -70,7 +97,7 @@ enum Color {
 ## Macros
 >Macros are named in `UPPER_CASE`.
 
-# Comments
+# 4. Comments
 
 >Use `// ...` insted of `/* ... */`.
 
@@ -182,5 +209,18 @@ else if (origin == toSquare("h8")) {
 // :: black queenside rook moves
 else if (origin == toSquare("a8")) {
     castle[Castle::BLACK_QUEENSIDE] = false;
+}
+```
+
+#  5. Formatting
+## Indentation
+>Indent with spaces. Each indentation level contains 4 spaces.
+
+>Braces are positioned using the `K&R` style.
+
+For example:
+```cpp
+int main() {
+    return EXIT_SUCCESS;
 }
 ```
